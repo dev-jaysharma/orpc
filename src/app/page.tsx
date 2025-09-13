@@ -1,13 +1,13 @@
 "use client"
 import { useForm } from "react-hook-form";
-import { orpc } from "../server/client.orpc";
+import { client } from "../server/client.orpc";
 
 export default function Form() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data: any) => {
     try {
-      await orpc.todo.create(data);
+      await client.todo.create(data);
     } catch (error) {
       console.error(error);
     }
